@@ -1,0 +1,896 @@
+info:
+  title: Ticketshow API overview
+
+paths:
+    /userlogin:
+        post:
+          operationId: userlogin
+          summary: User login
+          description: User login
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              email: string
+              password: string
+              required: true
+          responses:
+            200:
+              description: User login
+              schema:
+                $ref: '#/definitions/UserLoginResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+    /userlogout:
+        post:
+          operationId: userlogout
+          summary: User logout
+          description: User logout
+          consumes:
+            - application/json
+             security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+          content-type:
+              type: www-form-urlencoded
+              description: Content type
+            200:
+              description: User logout
+              schema:
+                $ref: '#/definitions/UserLogoutResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+    /userregister:
+        post:
+          operationId: userregister
+          summary: User register
+          description: User register
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              name: string
+              email: string
+              password: string
+              required: true
+             security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: User register
+              schema:
+                $ref: '#/definitions/UserRegisterResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+    /userupdate:
+        put:
+          operationId: userupdate
+          summary: User update
+          description: User update
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              name: string
+              email: string
+              password: string
+              required: true
+             security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: User update
+              schema:
+                $ref: '#/definitions/UserUpdateResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+    /userdelete:
+        delete:
+          operationId: userdelete
+          summary: User delete
+          description: User delete
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              id: string
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: User delete
+              schema:
+                $ref: '#/definitions/UserDeleteResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+      
+      /adminlogin:
+        post:
+          operationId: adminlogin
+          summary: Admin login
+          description: Admin login
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              email: string
+              password: string
+              required: true
+          responses:
+            200:
+              description: Admin login
+              schema:
+                $ref: '#/definitions/AdminLoginResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+      /adminlogout:
+        post:
+          operationId: adminlogout
+          summary: Admin logout
+          description: Admin logout
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              id: string
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Admin logout
+              schema:
+                $ref: '#/definitions/AdminLogoutResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+      
+      /adminregister:
+        post:
+          operationId: adminregister
+          summary: Admin register
+          description: Admin register
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              name: string
+              email: string
+              password: string
+              required: true
+          responses:
+            200:
+              description: Admin register
+              schema:
+                $ref: '#/definitions/AdminRegisterResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+          
+      /adminupdate:
+        put:
+          operationId: adminupdate
+          summary: Admin update
+          description: Admin update
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              name: string
+              email: string
+              password: string
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Admin update
+              schema:
+                $ref: '#/definitions/AdminUpdateResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+        /admindelete:
+            delete:
+              operationId: admindelete
+              summary: Admin delete
+              description: Admin delete
+              consumes:
+                - application/json
+              produces:
+                - application/json
+              parameters:
+                - in: body
+                  id: integer
+                  required: true
+              security:
+                -bearerAuth: []
+              headers:
+                Authorization:
+                  type: string
+                  description: Bearer token
+                content-type:
+                  type: www-form-urlencoded
+                  description: Content type
+              responses:
+                200:
+                  description: Admin delete
+                  schema:
+                    $ref: '#/definitions/AdminDeleteResponse'
+                400:
+                  description: Bad request
+                  schema:
+                    $ref: '#/definitions/Error'
+                401:
+                  description: Unauthorized
+                  schema:
+                    $ref: '#/definitions/Error'
+                500:
+                  description: Internal server error
+                  schema:
+                    $ref: '#/definitions/Error'
+
+      /getvenuebyadmin:
+        post:
+          operationId: getvenuebyadmin
+          summary: Get venue by admin
+          description: Get venue by admin
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              id: integer
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Get venue by admin
+              schema:
+                $ref: '#/definitions/GetVenueByAdminResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+      /addvenue:
+        post:
+          operationId: addvenue
+          summary: Add venue
+          description: Add venue
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              name: string
+              Location: string
+              email: string
+              description: string
+              image: string
+              capacity: integer
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Add venue
+              schema:
+                $ref: '#/definitions/AddVenueResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+      /updatevenue:
+        put:
+            operationId: updatevenue
+            summary: Update venue
+            description: Update venue
+            consumes:
+              - application/json
+            produces:
+              - application/json 
+            parameters:
+              - in: body
+                name: string
+                Location: string
+                email: string
+                description: string
+                image: string
+                capacity: integer
+                required: true
+            security:
+              -bearerAuth: []
+            headers:
+              Authorization:
+                type: string
+                description: Bearer token
+              content-type:
+                type: www-form-urlencoded
+                description: Content type
+            responses:
+              200:
+                description: Update venue
+                schema:
+                  $ref: '#/definitions/UpdateVenueResponse'
+              400:
+                description: Bad request
+                schema:
+                  $ref: '#/definitions/Error'
+              401:
+                description: Unauthorized
+                schema:
+                  $ref: '#/definitions/Error'
+              500:
+                description: Internal server error
+                schema:
+                  $ref: '#/definitions/Error'
+        
+        /deletevenue:
+          delete:
+            operationId: deletevenue
+            summary: Delete venue
+            description: Delete venue
+            consumes:
+              - application/json
+            produces:
+              - application/json
+            parameters:
+              - in: body
+                id: integer
+                required: true
+            security:
+              -bearerAuth: []
+            headers:
+              Authorization:
+                type: string
+                description: Bearer token
+              content-type:
+                type: www-form-urlencoded
+                description: Content type
+            responses:
+              200:
+                description: Delete venue
+                schema:
+                  $ref: '#/definitions/DeleteVenueResponse'
+              400:
+                description: Bad request
+                schema:
+                  $ref: '#/definitions/Error'
+              401:
+                description: Unauthorized
+                schema:
+                  $ref: '#/definitions/Error'
+              500:
+                description: Internal server error
+                schema:
+                  $ref: '#/definitions/Error'
+      
+      /getshowbyveue:
+        post:
+          operationId: getshowbyveue
+          summary: Get show by venue
+          description: Get show by venue
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              id: integer
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Get show by venue
+              schema:
+                $ref: '#/definitions/GetShowByVenueResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+
+
+      /addshow:
+        post:
+          operationId: addshow
+          summary: Add show
+          description: Add show
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              movie: string
+              tags: string
+              rating: string
+              description: string
+              image: string
+              date: string
+              time: string
+              price: integer
+              venue_id: integer
+              enabled: boolean
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Add show
+              schema:
+                $ref: '#/definitions/AddShowResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+      /updateshow:
+        put:
+          operationId: updateshow
+          summary: Update show
+          description: Update show
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              movie: string
+              tags: string
+              rating: string
+              description: string
+              image: string
+              date: string
+              time: string
+              price: integer
+              venue_id: integer
+              enabled: boolean
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Update show
+              schema:
+                $ref: '#/definitions/UpdateShowResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+      
+      /getfreeslots:
+          post:
+            operationId: getfreeslots
+            summary: Get free slots
+            description: Get free slots
+            consumes:
+              - application/json
+            produces:
+              - application/json
+            parameters:
+              - in: body
+                venue_id: integer
+                date: datetime
+                duration: datetime
+                required: true
+            security:
+              -bearerAuth: []
+            headers:
+              Authorization:
+                type: string
+                description: Bearer token
+              content-type:
+                type: www-form-urlencoded
+                description: Content type
+            responses:
+              200:
+                description: Get free slots
+                schema:
+                  $ref: '#/definitions/GetFreeSlotsResponse'
+              400:
+                description: Bad request
+                schema:
+                  $ref: '#/definitions/Error'
+              401:
+                description: Unauthorized
+                schema:
+                  $ref: '#/definitions/Error'
+              500:
+                description: Internal server error
+                schema:
+                  $ref: '#/definitions/Error'
+
+      /ableshow:
+          post:
+            operationId: ableshow
+            summary: Able show
+            description: Able show
+            consumes:
+              - application/json
+            produces:
+              - application/json
+            parameters:
+              - in: body
+                id: integer
+                required: true
+            security:
+              -bearerAuth: []
+            headers:
+              Authorization:
+                type: string
+                description: Bearer token
+              content-type:
+                type: www-form-urlencoded
+                description: Content type
+            responses:
+              200:
+                description: Able show
+                schema:
+                  $ref: '#/definitions/AbleShowResponse'
+              400:
+                description: Bad request
+                schema:
+                  $ref: '#/definitions/Error'
+              401:
+                description: Unauthorized
+                schema:
+                  $ref: '#/definitions/Error'
+              500:
+                description: Internal server error
+                schema:
+                  $ref: '#/definitions/Error'
+
+      /deleteshow:
+        delete:
+          operationId: deleteshow
+          summary: Delete show
+          description: Delete show
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              id: integer
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Delete show
+              schema:
+                $ref: '#/definitions/DeleteShowResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+      /bookshow:
+        post:
+          operationId: bookshow
+          summary: Book show
+          description: Book show
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              show_id: integer
+              user_id: integer
+              seats: string
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Book show
+              schema:
+                $ref: '#/definitions/BookShowResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
+      /rateshow:
+        post:
+          operationId: rateshow
+          summary: Rate show
+          description: Rate show
+          consumes:
+            - application/json
+          produces:
+            - application/json
+          parameters:
+            - in: body
+              show_id: integer
+              user_id: integer
+              rating: integer
+              required: true
+          security:
+            -bearerAuth: []
+          headers:
+            Authorization:
+              type: string
+              description: Bearer token
+            content-type:
+              type: www-form-urlencoded
+              description: Content type
+          responses:
+            200:
+              description: Rate show
+              schema:
+                $ref: '#/definitions/RateShowResponse'
+            400:
+              description: Bad request
+              schema:
+                $ref: '#/definitions/Error'
+            401:
+              description: Unauthorized
+              schema:
+                $ref: '#/definitions/Error'
+            500:
+              description: Internal server error
+              schema:
+                $ref: '#/definitions/Error'
+
